@@ -11,6 +11,7 @@ export enum Test {
 
 // maybe useful?
 export interface Place {
+    Id: string
     Name: string
     Title: string
     Description: string
@@ -20,9 +21,10 @@ export interface Place {
 }
 
 export interface Connection {
-    Name: string,
-    From: string[],
-    To: string[],
+    Id: string
+    Name: string
+    From: string[]
+    To: string[]
     Description: string
     Test: Test
 }
@@ -35,7 +37,7 @@ export const getPlaces = async () => {
     await places.select({
         view: 'Grid view'
     }).eachPage((records, fetchNextPage) => {
-        ret = [...ret, ...records.map(r => r.fields as Place)]
+        ret = [...ret, ...records.map(r => ({ ...r.fields, Id: r.id } as Place))]
         fetchNextPage()
     })
     return ret
@@ -46,7 +48,7 @@ export const getConnections = async () => {
     await connections.select({
         view: 'Grid view'
     }).eachPage((records, fetchNextPage) => {
-        ret = [...ret, ...records.map(r => r.fields as Connection)]
+        ret = [...ret, ...records.map(r => ({ ...r.fields, Id: r.id } as Connection))]
         fetchNextPage()
     })
     return ret

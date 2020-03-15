@@ -14,4 +14,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json(result)
 }
 
+// @ts-ignore
 export default cors(handler)
