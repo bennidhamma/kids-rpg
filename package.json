@@ -13,8 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "@types/airtable": "^0.5.7",
+    "@types/memory-cache": "^0.2.1",
     "@types/micro-cors": "^0.1.0",
     "airtable": "^0.8.1",
+    "memory-cache": "^0.2.0",
     "micro-cors": "^0.1.1",
     "next": "^9.3.0",
     "react": "^16.13.0",
